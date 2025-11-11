@@ -1,0 +1,43 @@
+{
+  "name": "just-expr",
+  "version": "1.0.0",
+  "description": "Parse javascript code and make sure it's JUST expression.",
+  "keywords": [
+    "ast",
+    "estree",
+    "expression",
+    "parse",
+    "codegen"
+  ],
+  "homepage": "https://github.com/HyperLuna/just-expr#readme",
+  "bugs": {
+    "url": "https://github.com/HyperLuna/just-expr/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HyperLuna/just-expr.git"
+  },
+  "license": "MIT",
+  "author": "HyperLuna",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "oxlint . --fix && oxfmt ."
+  },
+  "dependencies": {
+    "devlop": "^1.1.0",
+    "reserved-identifiers": "^1.2.0",
+    "zimmerframe": "^1.1.4"
+  },
+  "devDependencies": {
+    "@types/estree": "^1.0.8",
+    "@types/node": "^24.10.0",
+    "acorn": "^8.15.0",
+    "astring": "^1.9.0",
+    "oxfmt": "^0.13.0",
+    "oxlint": "^1.28.0",
+    "typescript": "^5.9.3"
+  }
+}

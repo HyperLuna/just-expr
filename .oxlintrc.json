@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "no-eq-null": "allow",
+    "no-param-reassign": "allow",
+    "no-rest-spread-properties": "allow"
+  },
+  "categories": {
+    "correctness": "deny",
+    "perf": "deny",
+    "restriction": "warn",
+    "suspicious": "warn"
+  }
+}
