@@ -1,8 +1,11 @@
 {
   "rules": {
+    "complexity": "allow",
     "no-eq-null": "allow",
+    "no-undefined": "allow",
     "no-param-reassign": "allow",
-    "no-rest-spread-properties": "allow"
+    "no-rest-spread-properties": "allow",
+    "consistent-function-scoping": "allow"
   },
   "categories": {
     "correctness": "deny",

@@ -27,17 +27,13 @@
     "lint": "oxlint . --fix && oxfmt ."
   },
   "dependencies": {
+    "@types/estree": "^1.0.8",
     "devlop": "^1.1.0",
-    "reserved-identifiers": "^1.2.0",
-    "zimmerframe": "^1.1.4"
+    "reserved-identifiers": "^1.2.0"
   },
   "devDependencies": {
-    "@types/estree": "^1.0.8",
-    "@types/node": "^24.10.0",
-    "acorn": "^8.15.0",
-    "astring": "^1.9.0",
-    "oxfmt": "^0.13.0",
-    "oxlint": "^1.28.0",
+    "oxfmt": "^0.28.0",
+    "oxlint": "^1.43.0",
     "typescript": "^5.9.3"
   }
 }

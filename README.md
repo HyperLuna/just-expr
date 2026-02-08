@@ -4,15 +4,15 @@
 
 ## API
 
-### .traverse
+### .transform
 
-Core API, traverses and transforms JavaScript AST in ESTree format to ensure it's **JUST** a JavaScript expression, and captures all variable accesses.
+Core API, traverses and transforms JavaScript AST in ESTree format to ensure it's **JUST** a JavaScript expression, and captures all free variables.
 
 The AST can come from [@babel/parser](https://babel.dev/docs/babel-parser), [acorn](https://github.com/acornjs/acorn), or any ESTree-compatible JavaScript parser.
 
 #### Params
 
-- **tree**: `Expression` The JavaScript expression AST in ESTree format.
+- **ast**: `Expression` The JavaScript expression AST in ESTree format.
 
 - **params**: `string[] = []` List of variable names that the expression is allowed to access. If there is variable not in this list and the `global` parameter is not set, an exception will be thrown.
 
@@ -20,15 +20,15 @@ The AST can come from [@babel/parser](https://babel.dev/docs/babel-parser), [aco
 
 - **options**: `Options` Transformation options.
 
-  - **enableThis**: `?boolean` Allow access to `this` (defaults to **false**)
+  - **enableThis**: `?boolean` enable access to `this` (default: **false**)
 
-  - **enableUpdate**: `?boolean` Allow increment/decrement operators and assignment expressions (defaults to **false**)
+  - **enableUpdate**: `?boolean` enable increment/decrement operators and assignment expressions (default: **false**)
 
-  - **enableDelete**: `?boolean` Allow the `delete` operator (defaults to **false**)
+  - **enableDelete**: `?boolean` enable operator `delete` (default: **false**)
 
-  - **enableInspect**: `?boolean` Allow `in`, `instanceof`, `typeof` operators (defaults to **false**)
+  - **enableInspect**: `?boolean` enable operator `in`, `instanceof`, `typeof` (default: **false**)
 
-  - **enableFunctionCall**: `?boolean` Allow function calls and the `new` operator (defaults to **true**)
+  - **enableFunctionCall**: `?boolean` enable function calls and operator `new` (default: **true**)
 
 #### Return
 
@@ -75,11 +75,11 @@ Traverses and transforms the AST, then compiles it into a function object.
 
 #### Params
 
-- **generate**: `(tree: Expression) => string` Code generation function, takes an expression AST as parameter and returns the generated code.
+- **generate**: `(ast: Expression) => string` Code generation function, takes an expression AST as parameter and returns the generated code.
 
-The remaining parameters are the same as the `.traverse` function:
+The remaining parameters will pass to `.transform` function:
 
-- **tree**: `Expression`
+- **ast**: `Expression`
 
 - **params**: `string[] = []`
 
@@ -109,7 +109,7 @@ const calc = compile(generate, parse('a + b'), ['a', 'b'])
 console.log(calc(3, 4)) // => 7
 
 // Can't compile expression using global variables or functions
-compile(generate, parse('Math.max(1, 2)')) // ReferenceError: Math is not defined
+compile(generate, parse('Math.max(1, 2)')) // ReferenceError: variable 'Math' is not defined
 // But can be provided via params
 console.log(compile(generate, parse('Math.max(1, 2)'), ['Math'])(Math)) // => 2
 // Or via global
